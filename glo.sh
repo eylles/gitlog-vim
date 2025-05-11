@@ -30,7 +30,7 @@ fi
 last_line=""
 run_glo() {
   git rev-parse 2> /dev/null || return 1
-  local git_cmd="git --no-pager log --oneline --color=always ${@:--n 128}"
+  local git_cmd="git --no-pager log --oneline --color=always ${*:--n 128}"
   case "$vim_type" in
       neovim|nvim)
           last_line="+term $git_cmd"
