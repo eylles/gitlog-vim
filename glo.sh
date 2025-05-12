@@ -33,6 +33,11 @@ fi
 
 myname="${0##*/}"
 
+# usage: is_num "value"
+is_num() {
+    printf %d "$1" >/dev/null 2>&1
+}
+
 last_line=""
 run_glo() {
   git rev-parse 2> /dev/null || return 1
@@ -57,7 +62,18 @@ if [ "$#" -lt 1 ]; then
 else
     case "$1" in
         '-n')
-            run_glo "$@"
+            if is_num "$2"; then
+                if [ "$2" -gt 0 ]; then
+                    run_glo "$@"
+                else
+                    printf '%s\n' \
+                        "${myname}: argument for -n '${2}' not in valid range!"
+                fi
+            else
+                 printf '%s\n' \
+                     "${myname}: argument for -n '${2}' is not a number!"
+                 exit 1
+            fi
             ;;
         *)
             printf '%s\n' "${myname}: invalid argument '$1'"
