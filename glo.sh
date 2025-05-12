@@ -40,7 +40,7 @@ run_glo() {
           ;;
   esac
   $vim_bin \
-    "+nnoremap <silent> q :if ((len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1) && expand('%') == '')<Bar>exe 'q!'<Bar>else<Bar>exe 'bd!'<Bar>endif<cr><CR>" \
+    '+nnoremap <silent> q :q!<CR>' \
     '+nnoremap <silent> Q :qa!<CR>' \
     "+nnoremap <silent> K 0:tabnew \| setfiletype git \| exe 'read! git --no-pager show <C-r><C-w>' \| norm ggdd<CR>" \
     "$last_line"
