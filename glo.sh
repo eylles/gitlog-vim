@@ -20,9 +20,13 @@ cat << __HEREDOC__ >> "$config_file"
 # glo config file
 
 # vim binary
+# the vim binary to execute, if you usually run vim through
+# a wrapper this is the place to specify it, so long as the
+# wrapper is in your PATH the full path is not needed.
 vim_bin="${vim_bin}"
 
 # vim type
+# accepted values are: vim, nvim, neovim
 vim_type="${vim_type}"
 __HEREDOC__
 fi
