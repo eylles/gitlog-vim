@@ -31,6 +31,7 @@ vim_type="${vim_type}"
 __HEREDOC__
 fi
 
+myname="${0##*/}"
 
 last_line=""
 run_glo() {
@@ -51,4 +52,16 @@ run_glo() {
     "$last_line"
 }
 
-run_glo "$@"
+if [ "$#" -lt 1 ]; then
+    run_glo "$@"
+else
+    case "$1" in
+        '-n')
+            run_glo "$@"
+            ;;
+        *)
+            printf '%s\n' "${myname}: invalid argument '$1'"
+            exit 1
+            ;;
+    esac
+fi
