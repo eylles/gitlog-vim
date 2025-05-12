@@ -5,7 +5,8 @@ vim_type="vim"
 # (n)vim binary to use
 vim_bin="/usr/bin/vim"
 
-config_dir="${XDG_CONFIG_HOME:-${HOME}/.config}/git-log-vim"
+dir_name="gitlog-vim"
+config_dir="${XDG_CONFIG_HOME:-${HOME}/.config}/${dir_name}"
 config_file="${config_dir}/configrc"
 
 if [ -f "$config_file" ]; then
