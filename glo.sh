@@ -75,6 +75,9 @@ else
                  exit 1
             fi
             ;;
+        '-u')
+            run_glo "$(git describe --tags | sed 's/-.*//')...HEAD"
+            ;;
         *)
             printf '%s\n' "${myname}: invalid argument '$1'"
             exit 1
