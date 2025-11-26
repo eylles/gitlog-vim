@@ -57,6 +57,11 @@ run_glo() {
     "$last_line"
 }
 
+show_usage () {
+    printf '%s\n' "Usage"
+    printf '\t%s\n' "${myname}: -h | -u | -n <N>"
+}
+
 if [ "$#" -lt 1 ]; then
     run_glo "$@"
 else
@@ -80,6 +85,7 @@ else
             ;;
         *)
             printf '%s\n' "${myname}: invalid argument '$1'"
+            show_usage
             exit 1
             ;;
     esac
