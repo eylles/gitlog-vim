@@ -57,9 +57,32 @@ run_glo() {
     "$last_line"
 }
 
+# space width
+sw=4
+# option string width
+ow=20
+
 show_usage () {
-    printf '%s\n' "Usage"
-    printf '\t%s\n' "${myname}: -h | -u | -n <N>"
+    printf '%s\n'  "Usage"
+    printf '%*s'   "$sw" " "
+    printf '%s\n'  "${myname}: -h | -u | -n <N>"
+}
+
+show_help () {
+    printf '%s\n'  "$myname"
+    printf '%*s'   "$sw" " "
+    printf '%s\n'  "a small shell wrapper to view git logs in (neo)vim"
+    show_usage
+    printf '%s\n'  "Options:"
+    printf '%*s'   "$sw" " "
+    printf '%-*s ' "$ow" "-n <NUM>"
+    printf ' %s\n' "view the last NUM number of commits"
+    printf '%*s'   "$sw" " "
+    printf '%-*s ' "$ow" "-u"
+    printf ' %s\n' "view the commits since last release tag"
+    printf '%*s'   "$sw" " "
+    printf '%-*s ' "$ow" "-h, --help, help"
+    printf ' %s\n' "show this help message"
 }
 
 if [ "$#" -lt 1 ]; then
@@ -82,6 +105,10 @@ else
             ;;
         '-u')
             run_glo "$(git describe --tags | sed 's/-.*//')...HEAD"
+            ;;
+        '-h'|'--help'|'help')
+            show_help
+            exit 0
             ;;
         *)
             printf '%s\n' "${myname}: invalid argument '$1'"
