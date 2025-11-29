@@ -61,7 +61,7 @@ run_glo() {
 
 get_unreleased_commits () {
     commits=""
-    tag_name=$(LANG=C git describe --tags)
+    tag_name=$(LANG=C git describe --tags 2>/dev/null)
     case "$tag_name" in
         "fatal: "*)
             tag_name=""
