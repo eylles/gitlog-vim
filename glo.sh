@@ -33,6 +33,8 @@ fi
 
 myname="${0##*/}"
 
+version="@VERSION@"
+
 # usage: is_num "value"
 is_num() {
     printf %d "$1" >/dev/null 2>&1
@@ -82,7 +84,7 @@ ow=20
 show_usage () {
     printf '%s\n'  "Usage"
     printf '%*s'   "$sw" " "
-    printf '%s\n'  "${myname}: -h | -u | -n <N>"
+    printf '%s\n'  "${myname}: -h | -v | -u | -n <N>"
 }
 
 show_help () {
@@ -100,6 +102,12 @@ show_help () {
     printf '%*s'   "$sw" " "
     printf '%-*s ' "$ow" "-h, --help, help"
     printf ' %s\n' "show this help message"
+    printf '%*s'   "$sw" " "
+    printf '%-*s ' "$ow" "-v, --version"
+    printf ' %s\n' "show version number"
+    printf '%s\n'  "Version:"
+    printf '%*s'   "$sw" " "
+    printf '%s\n'  "$version"
 }
 
 if [ "$#" -lt 1 ]; then
@@ -126,6 +134,9 @@ else
         '-h'|'--help'|'help')
             show_help
             exit 0
+            ;;
+        '-v'|'--version')
+            printf '%s\n' "$version"
             ;;
         *)
             printf '%s\n' "${myname}: invalid argument '$1'"

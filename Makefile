@@ -2,12 +2,13 @@
 PREFIX = ${HOME}/.local
 .PHONY: install uninstall
 NAME = glo
+VERSION = pre-release
 
 $(NAME):
-	cp glo.sh $(NAME)
+	sed "s|@VERSION@|$(VERSION)|g" glo.sh > $@
+	chmod 755 $@
 
 install: $(NAME)
-	chmod 755 $(NAME)
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -vf $(NAME) ${DESTDIR}${PREFIX}/bin
 uninstall:
