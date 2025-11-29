@@ -57,6 +57,23 @@ run_glo() {
     "$last_line"
 }
 
+get_unreleased_commits () {
+    commits=""
+    tag_name=$(LANG=C git describe --tags)
+    case "$tag_name" in
+        "fatal: "*)
+            tag_name=""
+            ;;
+        *)
+            tag_name="${tag_name%%-*}"
+            ;;
+    esac
+    if [ -n "$tag_name" ]; then
+        commits="${tag_name}...HEAD"
+    fi
+    printf '%s' "$commits"
+}
+
 # space width
 sw=4
 # option string width
@@ -104,7 +121,7 @@ else
             fi
             ;;
         '-u')
-            run_glo "$(git describe --tags | sed 's/-.*//')...HEAD"
+            run_glo "$(get_unreleased_commits)"
             ;;
         '-h'|'--help'|'help')
             show_help
