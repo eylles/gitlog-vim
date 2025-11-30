@@ -26,7 +26,10 @@ cat << __HEREDOC__ >> "$config_file"
 vim_bin="${vim_bin}"
 
 # vim type
-# accepted values are: vim, nvim, neovim
+# accepted values are: vim, neovim
+# the vim script for achieving the intended function is ever
+# so different in vim and neovim so this is necessary for the
+# script to work as intended.
 vim_type="${vim_type}"
 __HEREDOC__
 fi
@@ -45,7 +48,7 @@ run_glo() {
   git rev-parse 2> /dev/null || return 1
   local_git_cmd="git --no-pager log --oneline --color=always ${*:--n 128}"
   case "$vim_type" in
-      neovim|nvim)
+      neovim)
           last_line="+term $local_git_cmd"
           ;;
       vim)
