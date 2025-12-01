@@ -4,7 +4,7 @@ BIN_LOC = $(DESTDIR)${PREFIX}/bin
 MANPREFIX = $(DESTDIR)$(PREFIX)/share/man/man1
 .PHONY: install uninstall
 NAME = glo
-VERSION = pre-release
+VERSION = 0.0.0
 
 $(NAME):
 	sed "s|@VERSION@|$(VERSION)|g" glo.sh > $@
