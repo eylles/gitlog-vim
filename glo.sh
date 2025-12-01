@@ -111,6 +111,9 @@ show_help () {
     printf '%s\n'  "Version:"
     printf '%*s'   "$sw" " "
     printf '%s\n'  "$version"
+    printf '%s\n'  "Config:"
+    printf '%*s'   "$sw" " "
+    printf '%s\n'  "$config_file"
 }
 
 if [ "$#" -lt 1 ]; then
