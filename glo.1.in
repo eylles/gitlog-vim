@@ -1,0 +1,61 @@
+.TH GLO 1 glo\-@VERSION@
+.SH NAME
+glo \- git log on (neo)vim
+.SH SYNOPSIS
+.B glo
+.RB [ options ]
+.SH DESCRIPTION
+The program glo is a wrapper script to view git logs inside vim and neovim
+without additional plugins
+
+.SH OPTIONS
+.TP
+.B "help, \-h, \-\-help"
+Print brief usage information to standard output and exit.
+.TP
+.B "-v, \-\-version"
+Print version and exit.
+.TP
+.B "-u"
+View commits since last release tag.
+.TP
+.B "-n <NUM>"
+View last NUM of commits.
+.SH CONFIGURATION
+.P
+The configuration of glo is located at:
+.B ${XDG_CONFIG_HOME:-${HOME}/.config}/gitlog-vim/configrc
+
+.P
+To see the location of the configuration file and generating it if running for
+the first time, run glo with the help flag.
+
+.P
+The configuration defines the following options:
+
+.TP
+.B
+vim_bin
+The vim binary to execute, if you usually run vim through a wrapper this is the
+place to specify it as the vim binary, so long as the wrapper is in your PATH
+the full path is not needed.
+
+.TP
+.B
+vim_type
+The type of vim (vim or neovim) you use, for achieving the intended function
+there is just one line of vimscript that differs between vim and neovim so this
+is necessary for the script to work as intended.
+accepted values are: vim, neovim
+
+.SH AUTHORS
+.EX
+NRK                    <nrk at disroot.org>
+eylles                 <ed.ylles1997 at gmail.com>
+.EE
+.SH HOMEPAGE
+.TP
+Source code:
+.EE
+https://github.com/eylles/gitlog-vim
+.EX
