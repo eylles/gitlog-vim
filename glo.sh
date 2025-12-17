@@ -45,21 +45,21 @@ is_num() {
 
 last_line=""
 run_glo() {
-  git rev-parse 2> /dev/null || return 1
-  local_git_cmd="git --no-pager log --oneline --color=always ${*:--n 128}"
-  case "$vim_type" in
-      neovim)
-          last_line="+term $local_git_cmd"
-          ;;
-      vim)
-          last_line="+call term_start('$local_git_cmd', {'hidden': 1, 'term_cols': 2048, 'term_finish': 'open', 'term_opencmd': 'buffer %d'})"
-          ;;
-  esac
-  $vim_bin \
-    '+nnoremap <silent> q :q!<CR>' \
-    '+nnoremap <silent> Q :qa!<CR>' \
-    "+nnoremap <silent> K 0:tabnew \| setfiletype git \| exe 'read! git --no-pager show <C-r><C-w>' \| norm ggdd<CR>" \
-    "$last_line"
+    git rev-parse 2> /dev/null || return 1
+    local_git_cmd="git --no-pager log --oneline --color=always ${*:--n 128}"
+    case "$vim_type" in
+        neovim)
+            last_line="+term $local_git_cmd"
+            ;;
+        vim)
+            last_line="+call term_start('$local_git_cmd', {'hidden': 1, 'term_cols': 2048, 'term_finish': 'open', 'term_opencmd': 'buffer %d'})"
+            ;;
+    esac
+    $vim_bin \
+        '+nnoremap <silent> q :q!<CR>' \
+        '+nnoremap <silent> Q :qa!<CR>' \
+        "+nnoremap <silent> K 0:tabnew \| setfiletype git \| exe 'read! git --no-pager show <C-r><C-w>' \| norm ggdd<CR>" \
+        "$last_line"
 }
 
 get_unreleased_commits () {
