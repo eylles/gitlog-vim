@@ -46,7 +46,14 @@ is_num() {
 last_line=""
 run_glo() {
     git rev-parse 2> /dev/null || return 1
-    local_git_cmd="git --no-pager log --oneline --color=always ${*:--n 128}"
+    arg=""
+    def_arg="-n 128"
+    if [ -z "$1" ]; then
+        arg="$def_arg"
+    else
+        arg="$*"
+    fi
+    local_git_cmd="git --no-pager log --oneline --color=always ${arg}"
     case "$vim_type" in
         neovim)
             last_line="+term $local_git_cmd"
