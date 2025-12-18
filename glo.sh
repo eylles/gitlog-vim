@@ -124,7 +124,7 @@ show_help () {
 }
 
 if [ "$#" -lt 1 ]; then
-    run_glo "$@"
+    run_glo
 else
     case "$1" in
         '-n')
