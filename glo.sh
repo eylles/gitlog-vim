@@ -152,9 +152,13 @@ else
             printf '%s\n' "$version"
             ;;
         *)
-            printf '%s\n' "${myname}: invalid argument '$1'"
-            show_usage
-            exit 1
+            if [ -r "$1" ]; then
+                run_glo "--decorate" "--follow" "--" "$1"
+            else
+                printf '%s\n' "${myname}: invalid argument '$1'"
+                show_usage
+                exit 1
+            fi
             ;;
     esac
 fi
