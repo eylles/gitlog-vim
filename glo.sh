@@ -144,6 +144,22 @@ else
         '-u')
             run_glo "$(get_unreleased_commits)"
             ;;
+        '-c')
+            if [ -n "$2" ]; then
+                case "$2" in
+                    *...*)
+                        run_glo "$2"
+                        ;;
+                    *)
+                        printf '%s\n' \
+                            "${myname}: argument for -c '${2}' not in valid!"
+                        ;;
+                esac
+            else
+                printf '%s\n' \
+                    "${myname}: argument for -c '${2}' not in valid!"
+            fi
+            ;;
         '-h'|'--help'|'help')
             show_help
             exit 0
