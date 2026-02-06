@@ -2,8 +2,8 @@
 PREFIX = ${HOME}/.local
 BIN_LOC = $(DESTDIR)${PREFIX}/bin
 MANPREFIX = $(DESTDIR)$(PREFIX)/share/man/man1
-.PHONY: install uninstall
 NAME = glo
+.PHONY: install uninstall
 
 include version.mk config.mk
 
