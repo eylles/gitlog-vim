@@ -21,6 +21,8 @@ View commits since last release tag.
 .TP
 .B "-n <NUM>"
 View last NUM of commits.
+.B "-c <tag/hash>...<tag/hash>"
+View commits from tag/hash to tag/hash, this is just passed directly to git log.
 .SH CONFIGURATION
 .P
 The configuration of glo is located at:
