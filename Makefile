@@ -5,7 +5,7 @@ MANPREFIX = $(DESTDIR)$(PREFIX)/share/man/man1
 .PHONY: install uninstall
 NAME = glo
 
-include version.mk
+include version.mk config.mk
 
 $(NAME):
 	sed "s|@VERSION@|$(VERSION)|g" glo.sh > $@
