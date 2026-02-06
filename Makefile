@@ -10,16 +10,16 @@ include version.mk config.mk
 $(NAME):
 	sed "s|@VERSION@|$(VERSION)|g" glo.sh > $@
 	chmod 755 $@
-	sed "s|@VERSION@|$(VERSION)|g" glo.1.in > glo.1
+	sed "s|@VERSION@|$(VERSION)|g; s|glo|$(NAME)|g" glo.1.in > $(NAME).1
 
 install: $(NAME)
 	mkdir -p $(BIN_LOC)
 	cp -vf $(NAME) $(BIN_LOC)/
 	mkdir -p $(MANPREFIX)
-	cp -vf glo.1 $(MANPREFIX)/
+	cp -vf $(NAME).1 $(MANPREFIX)/
 uninstall:
 	rm -vf $(BIN_LOC)/$(NAME)
-	rm -vf $(MANPREFIX)/glo.1
+	rm -vf $(MANPREFIX)/$(NAME).1
 clean:
-	rm -vrf $(NAME) glo.1
+	rm -vrf $(NAME) $(NAME).1
 

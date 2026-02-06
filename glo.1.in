@@ -1,4 +1,4 @@
-.TH GLO 1 glo\-@VERSION@
+.TH GIT LOG VIM 1 glo\-@VERSION@
 .SH NAME
 glo \- git log on (neo)vim
 .SH SYNOPSIS
