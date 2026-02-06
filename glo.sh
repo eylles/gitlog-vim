@@ -59,7 +59,7 @@ run_glo() {
             last_line="+term $local_git_cmd"
             ;;
         vim)
-            last_line="+call term_start('$local_git_cmd', {'hidden': 1, 'term_cols': 2048, 'term_finish': 'open', 'term_opencmd': 'buffer %d'})"
+            last_line="+call term_start('$local_git_cmd', {'hidden': 1, 'term_cols': 1000, 'term_finish': 'open', 'term_opencmd': 'buffer %d'})"
             ;;
     esac
     $vim_bin \
